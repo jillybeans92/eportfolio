@@ -6,6 +6,13 @@
    To add, rename, or reorder a page, change it here once.
    ========================================================= */
 
+/* Your photo on the home page.
+   Leave it empty ('') to show just the moon.
+   To add a photo: put it in the artifacts folder, then type its path here,
+   like: const PHOTO = 'artifacts/jill-photo.jpg';
+   A square photo with your face centered works best. */
+const PHOTO = 'artifacts/jill-photo.jpeg';
+
 const SITE = [
   { title: 'Home', href: 'index.html' },
   {
@@ -176,6 +183,21 @@ const DOC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
     label.textContent = added + ' of ' + total + ' added';
     requestAnimationFrame(() => { fill.style.width = Math.round((added / total) * 100) + '%'; });
   }
+})();
+
+/* ---------- Photo inside the moon (home page only) ---------- */
+(function setupPhoto() {
+  const hero = document.querySelector('.home-hero');
+  if (!hero || !PHOTO.trim()) return;
+
+  const frame = document.createElement('div');
+  frame.className = 'hero-portrait';
+  const img = document.createElement('img');
+  img.src = ROOT + PHOTO.trim();
+  img.alt = 'Jill Hayhurst';
+  frame.appendChild(img);
+  hero.appendChild(frame);
+  hero.classList.add('has-photo');
 })();
 
 /* ---------- Year in the sidebar ---------- */

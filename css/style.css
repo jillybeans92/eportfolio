@@ -500,3 +500,41 @@ body {
   body { background: var(--mist); }
   .hero-moon { width: 120px; top: -0.5rem; opacity: 0.4; }
 }
+
+/* ---------- Photo inside the moon (turned on in js/main.js) ---------- */
+.hero-portrait { display: none; }
+
+.home-hero.has-photo .hero-moon {
+  opacity: 1;
+}
+
+.home-hero.has-photo .hero-portrait {
+  display: block;
+  position: absolute;
+  top: calc(-1.5rem + clamp(160px, 26vw, 300px) * 0.115);
+  right: calc(clamp(160px, 26vw, 300px) * -0.02);
+  width: calc(clamp(160px, 26vw, 300px) * 0.64);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--sage-100);
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .home-hero.has-photo .hero-moon { width: 150px; opacity: 1; }
+  .home-hero.has-photo .hero-portrait {
+    top: calc(-0.5rem + 150px * 0.115);
+    right: calc(150px * -0.02);
+    width: calc(150px * 0.64);
+  }
+  .home-hero.has-photo { padding-top: 150px; }
+  .home-hero.has-photo .hero-moon { left: 0; right: auto; }
+  .home-hero.has-photo .hero-portrait { left: calc(150px * 0.62 - 150px * 0.32); right: auto; }
+}
