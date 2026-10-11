@@ -149,6 +149,12 @@ const DOC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
       img.src = src;
       img.alt = panel.querySelector('.artifact-title')?.textContent || 'Artifact';
       view.appendChild(img);
+    } else if (['mp4', 'webm'].includes(ext)) {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.preload = 'metadata';
+      view.appendChild(video);
     } else if (ext === 'pdf') {
       const frame = document.createElement('iframe');
       frame.src = src;
